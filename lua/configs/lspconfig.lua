@@ -76,6 +76,13 @@ require("mason-lspconfig").setup({
 			require("lspconfig").lua_ls.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
+				settings = {
+					Lua = {
+						workspace = { checkThirdParty = false },
+						telemtry = { enable = false },
+						diagnostics = { disable = { "undefined-global" } },
+					},
+				},
 			})
 		end,
 	},

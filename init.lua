@@ -27,9 +27,11 @@ require("configs.colors")
 require("configs.lspconfig")
 require("configs.telescope")
 require("configs.treesitter")
+require("configs.trouble")
 
 -- Plugin setups
 require("mason").setup()
 require("ibl").setup()
 require("colorizer").setup({}, { names = false })
 require("lualine").setup()
+require("gitblame").setup()

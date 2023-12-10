@@ -61,11 +61,18 @@ return require("packer").startup(function(use)
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	}
 
-	use({
+	use {
 		"kylechui/nvim-surround",
 		tag = "*",
 		config = function()
 			require("nvim-surround").setup()
 		end,
-	})
+	}
+
+	use {
+		"folke/trouble.nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
+	}
+
+	use "f-person/git-blame.nvim"
 end)

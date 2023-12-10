@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 vim.keymap.set('n', "<leader>pv", vim.cmd.Ex)
-vim.keymap.set('n', "<leader>ps", function()
+vim.keymap.set('n', "<leader>fw", function()
     require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
