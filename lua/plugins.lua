@@ -75,4 +75,12 @@ return require("packer").startup(function(use)
 	}
 
 	use "f-person/git-blame.nvim"
+
+	use "nvim-lua/plenary.nvim"
+
+	use {
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = {{ "nvim-lua/plenary.nvim" }},
+	}
 end)

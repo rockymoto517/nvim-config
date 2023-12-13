@@ -1,10 +1,6 @@
 vim.g.mapleader = " "
 
 vim.keymap.set('n', "<leader>pv", vim.cmd.Ex)
-vim.keymap.set('n', "<leader>fw", function()
-    require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
-end)
-
 vim.keymap.set('n', "Q", "<nop>")
 vim.keymap.set('n', "J", "mzJ`z")
 vim.keymap.set('n', "<C-d>", "<C-d>zz")
@@ -18,6 +14,11 @@ vim.keymap.set('n', "<leader>M", function()
 	if require("multicursors.search").find_pattern(true) then
 		require("multicursors.layers").normal_hydra:activate()
 	end
+end)
+vim.keymap.set('n', "<leader>wt", function()
+    local cursor = vim.fn.getpos('.')
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos('.', cursor)
 end)
 
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv")

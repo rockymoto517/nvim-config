@@ -95,6 +95,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Hasan\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\git-blame.nvim",
     url = "https://github.com/f-person/git-blame.nvim"
   },
+  harpoon = {
+    loaded = true,
+    path = "C:\\Users\\Hasan\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["hydra.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Hasan\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\hydra.nvim",
