@@ -13,14 +13,15 @@ conform.setup({
 	},
 })
 
-local path = require("path")
-local separator = "/"
-if path:find("\\") then
-	separator = "\\"
-end
-local stylua = path .. separator .. "formatting" .. separator .. "stylua.toml"
+local path = require("configs.path")
+local stylua = path .. "stylua.toml"
 conform.formatters.stylua = {
 	prepend_args = { "-f", stylua },
+}
+
+local clangformat = path .. ".clang-format"
+conform.formatters.clang_format = {
+	prepend_args = { "--style=file:" .. clangformat },
 }
 
 vim.keymap.set({ "n", "v" }, "<leader>fmt", function()
