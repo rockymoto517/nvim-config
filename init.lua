@@ -6,7 +6,8 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = "C:\\Users\\Hasan\\.vim\\undodir"
+-- So it's different on my linux and windows setups
+vim.opt.undodir = require("undodir")
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
