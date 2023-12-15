@@ -81,7 +81,20 @@ require("mason-lspconfig").setup({
 			require("lspconfig").clangd.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
-				cmd = { "clangd" },
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					"--completion-style=bundled",
+					"--cross-file-rename",
+					"--header-insertion=iwyu",
+				},
+				init_options = {
+					clangdFileStatus = true,
+					usePlaceholders = true,
+					completeUnimported = true,
+					semanticHighlighting = true,
+				},
 			})
 		end,
 		lua_ls = function()

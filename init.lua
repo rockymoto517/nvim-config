@@ -33,6 +33,7 @@ require("configs.harpoon")
 require("configs.conform")
 require("configs.linting")
 require("configs.whichkey")
+require("configs.masoninstaller")
 
 -- Plugin setups
 require("mason").setup()

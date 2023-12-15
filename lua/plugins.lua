@@ -92,5 +92,7 @@ return require("packer").startup(function(use)
 	use("mfussenegger/nvim-lint")
 
 	use("folke/which-key.nvim")
+
+	use("WhoIsSethDaniel/mason-tool-installer.nvim")
 end)
 
