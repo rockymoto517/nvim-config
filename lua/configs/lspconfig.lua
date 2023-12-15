@@ -1,4 +1,4 @@
-local lsp = require("lsp-zero")		
+local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
@@ -27,16 +27,26 @@ cmp.setup({
 })
 
 lsp.set_preferences({
-	sign_icons = { }
+	sign_icons = {},
 })
 
 local on_attach = function(client, bufnr)
-	local opts = { buffer = bufnr, remap = false }
+	local function opts(_desc)
+		return { buffer = bufnr, remap = false, desc = _desc }
+	end
 
-	vim.keymap.set('n', "gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set('n', "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-	vim.keymap.set('n', "<leader>rr", function() vim.lsp.buf.references() end, opts)
-	vim.keymap.set('n', "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+	vim.keymap.set("n", "gd", function()
+		vim.lsp.buf.definition()
+	end, opts("Go to definition"))
+	vim.keymap.set("n", "<leader>ca", function()
+		vim.lsp.buf.code_action()
+	end, opts("Do code action"))
+	vim.keymap.set("n", "<leader>rr", function()
+		vim.lsp.buf.references()
+	end, opts("Find references"))
+	vim.keymap.set("n", "<leader>rn", function()
+		vim.lsp.buf.rename()
+	end, opts("Rename symbol"))
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false
 end

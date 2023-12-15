@@ -1,86 +1,92 @@
 return require("packer").startup(function(use)
-	use "wbthomason/packer.nvim"
+	use("wbthomason/packer.nvim")
 
-    use "neovim/nvim-lspconfig"
+	use("neovim/nvim-lspconfig")
 
-    use "williamboman/mason.nvim"
+	use("williamboman/mason.nvim")
 
-    use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
+	use({ "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
-    use "mbbill/undotree"
+	use("mbbill/undotree")
 
-    use "tpope/vim-fugitive"
+	use("tpope/vim-fugitive")
 
-    use {
+	use({
 		"rose-pine/neovim",
 		as = "rose-pine",
 		config = function()
 			vim.cmd("colorscheme rose-pine")
-		end
-	}
+		end,
+	})
 
-    use { "smoka7/multicursors.nvim", requires = { "smoka7/hydra.nvim" } }
+	use({ "smoka7/multicursors.nvim", requires = { "smoka7/hydra.nvim" } })
 
-    use {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
-    }
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 
-    use {
-        "nvim-treesitter/nvim-treesitter",
+	use({
+		"nvim-treesitter/nvim-treesitter",
 		{ run = ":TSUpdate" },
-	}
+	})
 
-	use "nvim-treesitter/playground"
+	use("nvim-treesitter/playground")
 
-	use {
-	    'VonHeikemen/lsp-zero.nvim',
-	    branch = 'v3.x',
-	    requires = {
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v3.x",
+		requires = {
 			{ "williamboman/nvim-lsp-installer" },
-		    { 'williamboman/mason.nvim' },
-		    { 'williamboman/mason-lspconfig.nvim' },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
+			{ "neovim/nvim-lspconfig" },
 			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'L3MON4D3/LuaSnip' },
-		}
-	}
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "L3MON4D3/LuaSnip" },
+		},
+	})
 
-	use "lukas-reineke/indent-blankline.nvim"
+	use("lukas-reineke/indent-blankline.nvim")
 
-	use "norcalli/nvim-colorizer.lua"
+	use("norcalli/nvim-colorizer.lua")
 
-	use {
+	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
-	}
+	})
 
-	use {
+	use({
 		"kylechui/nvim-surround",
 		tag = "*",
 		config = function()
 			require("nvim-surround").setup()
 		end,
-	}
+	})
 
-	use {
+	use({
 		"folke/trouble.nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },
-	}
+	})
 
-	use "f-person/git-blame.nvim"
+	use("f-person/git-blame.nvim")
 
-	use "nvim-lua/plenary.nvim"
+	use("nvim-lua/plenary.nvim")
 
-	use {
+	use({
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
-		requires = {{ "nvim-lua/plenary.nvim" }},
-	}
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+
+	use("stevearc/conform.nvim")
+
+	use("mfussenegger/nvim-lint")
+
+	use("folke/which-key.nvim")
 end)

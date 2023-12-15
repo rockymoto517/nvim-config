@@ -19,7 +19,7 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.opt.clipboard:append { "unnamed", "unnamedplus" }
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 require("keys")
 require("plugins")
@@ -30,6 +30,9 @@ require("configs.telescope")
 require("configs.treesitter")
 require("configs.trouble")
 require("configs.harpoon")
+require("configs.conform")
+require("configs.linting")
+require("configs.whichkey")
 
 -- Plugin setups
 require("mason").setup()
