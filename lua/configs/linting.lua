@@ -15,3 +15,4 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 vim.keymap.set("n", "<leader>lt", function()
 	lint.try_lint()
 end, { desc = "Lint fine" })
+

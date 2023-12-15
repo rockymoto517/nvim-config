@@ -13,6 +13,16 @@ conform.setup({
 	},
 })
 
+local path = require("path")
+local separator = "/"
+if path:find("\\") then
+	separator = "\\"
+end
+local stylua = path .. separator .. "formatting" .. separator .. "stylua.toml"
+conform.formatters.stylua = {
+	prepend_args = { "-f", stylua },
+}
+
 vim.keymap.set({ "n", "v" }, "<leader>fmt", function()
 	conform.format({
 		lsp_fallback = true,
@@ -20,3 +30,4 @@ vim.keymap.set({ "n", "v" }, "<leader>fmt", function()
 		timeout_ms = 500,
 	})
 end, { desc = "Format file or visual selection" })
+

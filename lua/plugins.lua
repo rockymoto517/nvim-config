@@ -5,7 +5,10 @@ return require("packer").startup(function(use)
 
 	use("williamboman/mason.nvim")
 
-	use({ "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
 
 	use("mbbill/undotree")
 
@@ -90,3 +93,4 @@ return require("packer").startup(function(use)
 
 	use("folke/which-key.nvim")
 end)
+

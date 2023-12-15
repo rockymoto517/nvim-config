@@ -40,3 +40,4 @@ require("ibl").setup()
 require("colorizer").setup({}, { names = false })
 require("lualine").setup()
 require("gitblame").setup()
+
