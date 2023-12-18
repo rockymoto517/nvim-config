@@ -34,6 +34,7 @@ require("configs.conform")
 require("configs.linting")
 require("configs.whichkey")
 require("configs.masoninstaller")
+require("configs.textobjects")
 
 -- Plugin setups
 require("mason").setup()

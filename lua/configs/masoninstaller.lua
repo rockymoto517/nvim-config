@@ -5,7 +5,6 @@ require("mason-tool-installer").setup({
 		"black",
 		"clang-format",
 		"clangd",
-		"pyright",
 		"prettier",
 		"pylint",
 		"stylua",
