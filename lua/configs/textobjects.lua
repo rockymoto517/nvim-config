@@ -63,7 +63,7 @@ require("nvim-treesitter.configs").setup({
 				},
 				["ic"] = {
 					query = "@class.inner",
-					desc = "Select outer part of a class",
+					desc = "Select inner part of a class",
 				},
 			},
 		},
