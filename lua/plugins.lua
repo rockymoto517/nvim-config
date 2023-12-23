@@ -110,5 +110,7 @@ return require("packer").startup(function(use)
 	use("folke/which-key.nvim")
 
 	use("WhoIsSethDaniel/mason-tool-installer.nvim")
+
+	use("christoomey/vim-tmux-navigator")
 end)
 
