@@ -112,5 +112,12 @@ return require("packer").startup(function(use)
 	use("WhoIsSethDaniel/mason-tool-installer.nvim")
 
 	use("christoomey/vim-tmux-navigator")
+
+	use({
+		"stevearc/oil.nvim",
+		config = function()
+			require("configs.oil")
+		end,
+	})
 end)
 

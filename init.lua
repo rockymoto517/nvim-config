@@ -6,6 +6,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
+
 -- So it's different on my linux and windows setups
 vim.opt.undodir = require("undodir")
 vim.opt.undofile = true
@@ -21,9 +22,15 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
+-- Disable netrw in favor of oil
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+
+-- Load native rebinds and plugins
 require("keys")
 require("plugins")
 
+-- Load plugin configurations
 require("configs.colors")
 require("configs.lspconfig")
 require("configs.telescope")
