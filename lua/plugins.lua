@@ -119,5 +119,7 @@ return require("packer").startup(function(use)
 			require("configs.oil")
 		end,
 	})
+
+	use("tris203/hawtkeys.nvim")
 end)
 
