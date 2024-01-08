@@ -43,6 +43,7 @@ require("configs.whichkey")
 require("configs.masoninstaller")
 require("configs.textobjects")
 require("configs.hawtkeys")
+require("configs.snips")
 
 -- Plugin setups
 require("mason").setup()

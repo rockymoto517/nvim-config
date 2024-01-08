@@ -121,5 +121,12 @@ return require("packer").startup(function(use)
 	})
 
 	use("tris203/hawtkeys.nvim")
+
+	use({
+		"chrisgrieser/nvim-scissors",
+		config = function()
+			require("scissors").setup({})
+		end,
+	})
 end)
 
