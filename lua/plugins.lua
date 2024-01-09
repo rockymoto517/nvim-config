@@ -64,11 +64,47 @@ return require("packer").startup(function(use)
 
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "L3MON4D3/LuaSnip" },
 		},
+	})
+
+	use({
+		"chrisgrieser/nvim-scissors",
+		config = function()
+			require("scissors").setup({})
+		end,
+	})
+
+	use("hrsh7th/nvim-cmp")
+
+	use("hrsh7th/cmp-nvim-lsp")
+
+	use("saadparwaiz1/cmp_luasnip")
+
+	use({
+		"L3MON4D3/LuaSnip",
+		after = "nvim-cmp",
+		config = function()
+			local types = require("luasnip.util.types")
+			require("luasnip").setup({
+				enable_autosnippets = true,
+				update_events = { "TextChanged", "TextChangedI" },
+				ext_opts = {
+					[types.choiceNode] = {
+						active = {
+							virt_text = { { "●", "Blue" } },
+						},
+					},
+					[types.insertNode] = {
+						active = {
+							virt_text = { { "●", "Orange" } },
+						},
+					},
+				},
+			})
+			require("luasnip.loaders.from_vscode").load({
+				paths = { "./snippets" },
+			})
+		end,
 	})
 
 	use("lukas-reineke/indent-blankline.nvim")
@@ -122,11 +158,6 @@ return require("packer").startup(function(use)
 
 	use("tris203/hawtkeys.nvim")
 
-	use({
-		"chrisgrieser/nvim-scissors",
-		config = function()
-			require("scissors").setup({})
-		end,
-	})
+	use("nvim-tree/nvim-web-devicons")
 end)
 

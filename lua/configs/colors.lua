@@ -1,5 +1,9 @@
 require("rose-pine").setup({
 	variant = "moon",
-	disable_italics = true,
+	styles = {
+		bold = true,
+		italic = false,
+		transparency = false,
+	},
 })
 

@@ -3,10 +3,11 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 local cmp = require("cmp")
+local cmp_action = lsp.cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+	["<C-p>"] = cmp_action.select_prev_or_fallback(),
+	["<C-n>"] = cmp_action.tab_complete(),
 	["<C-a>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 	["<Tab>"] = nil,
@@ -14,13 +15,14 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 cmp.setup({
-	snipet = {
+	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	mappings = cmp_mappings,
+	mapping = cmp_mappings,
 	sources = {
+		{ name = "path" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	},
