@@ -6,7 +6,7 @@ local cmp = require("cmp")
 local cmp_action = lsp.cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-p>"] = cmp_action.select_prev_or_fallback(),
+	["<C-j>"] = cmp_action.select_prev_or_fallback(),
 	["<C-n>"] = cmp_action.tab_complete(),
 	["<C-a>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
