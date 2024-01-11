@@ -84,26 +84,7 @@ return require("packer").startup(function(use)
 		"L3MON4D3/LuaSnip",
 		after = "nvim-cmp",
 		config = function()
-			local types = require("luasnip.util.types")
-			require("luasnip").setup({
-				enable_autosnippets = true,
-				update_events = { "TextChanged", "TextChangedI" },
-				ext_opts = {
-					[types.choiceNode] = {
-						active = {
-							virt_text = { { "●", "Blue" } },
-						},
-					},
-					[types.insertNode] = {
-						active = {
-							virt_text = { { "●", "Orange" } },
-						},
-					},
-				},
-			})
-			require("luasnip.loaders.from_vscode").load({
-				paths = { "./snippets" },
-			})
+			require("configs.luasnip")
 		end,
 	})
 
