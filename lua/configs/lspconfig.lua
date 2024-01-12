@@ -72,6 +72,11 @@ capabilities.textDocument.completion.completionItem = {
 	},
 }
 
+require("lspconfig").metals.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = { "clangd", "lua_ls" },
@@ -108,12 +113,6 @@ require("mason-lspconfig").setup({
 						diagnostics = { disable = { "undefined-global" } },
 					},
 				},
-			})
-		end,
-		metals = function()
-			require("lspconfig").metals.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
 			})
 		end,
 	},
