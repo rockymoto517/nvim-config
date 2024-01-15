@@ -28,6 +28,8 @@ vim.keymap.set({ "v", "n" }, "<leader> m", "MCstart", { desc = "Toggle multicurs
 
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("i", "<C-a>", "<nop>")
+vim.keymap.set("i", "<C-m>", "<nop>")
+vim.keymap.set("i", "<C-h>", "<nop>")
 
 -- Tmux integration
 vim.g.tmux_navigator_no_mappings = 1

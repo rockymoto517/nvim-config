@@ -140,5 +140,12 @@ return require("packer").startup(function(use)
 	use("tris203/hawtkeys.nvim")
 
 	use("nvim-tree/nvim-web-devicons")
+
+	use({
+		"andymass/vim-matchup",
+		setup = function()
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+		end,
+	})
 end)
 
