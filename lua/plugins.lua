@@ -1,45 +1,37 @@
-return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-
-	use("neovim/nvim-lspconfig")
-
-	use("williamboman/mason.nvim")
-
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-
-	use("mbbill/undotree")
-
-	use("tpope/vim-fugitive")
-
-	use({
+require("lazy").setup({
+	{
 		"rose-pine/neovim",
-		as = "rose-pine",
+		lazy = false,
+		priority = 1000,
+		name = "rose-pine",
 		config = function()
-			vim.cmd("colorscheme rose-pine")
+			require("configs.colors")
 		end,
-	})
+	},
 
-	use({ "smoka7/multicursors.nvim", requires = { "smoka7/hydra.nvim" } })
+	{ "neovim/nvim-lspconfig" },
 
-	use({
+	{ "williamboman/mason.nvim" },
+
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+
+	{ "mbbill/undotree" },
+
+	{ "tpope/vim-fugitive" },
+
+	{
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	})
+		lazy = false,
+	},
 
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		{ run = ":TSUpdate" },
-	})
+	{ "nvim-treesitter/nvim-treesitter" },
 
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		after = "nvim-treesitter",
-		requires = "nvim-treesitter/nvim-treesitter",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 			vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
@@ -50,102 +42,117 @@ return require("packer").startup(function(use)
 			vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
 			vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 		end,
-	})
+	},
 
-	use("nvim-treesitter/playground")
+	{ "nvim-treesitter/playground" },
 
-	use({
+	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
-		requires = {
-			{ "williamboman/nvim-lsp-installer" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-
+		dependencies = {
+			"williamboman/nvim-lsp-installer",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
+			"neovim/nvim-lspconfig",
 		},
-	})
+	},
 
-	use({
+	{
 		"chrisgrieser/nvim-scissors",
-		config = function()
-			require("scissors").setup({})
-		end,
-	})
+		dependencies = "nvim-telescope/telescope.nvim",
+		opts = {
+			snippetDir = vim.fn.stdpath("config") .. "/snippets",
+		},
+	},
 
-	use("hrsh7th/nvim-cmp")
+	{ "hrsh7th/nvim-cmp" },
 
-	use("hrsh7th/cmp-nvim-lsp")
+	{ "hrsh7th/cmp-nvim-lsp" },
 
-	use("saadparwaiz1/cmp_luasnip")
+	{ "saadparwaiz1/cmp_luasnip" },
 
-	use({
+	{
 		"L3MON4D3/LuaSnip",
-		after = "nvim-cmp",
 		config = function()
 			require("configs.luasnip")
 		end,
-	})
+	},
 
-	use("lukas-reineke/indent-blankline.nvim")
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+	},
 
-	use("norcalli/nvim-colorizer.lua")
+	{ "norcalli/nvim-colorizer.lua" },
 
-	use({
+	{
 		"nvim-lualine/lualine.nvim",
-		requires = { "nvim-tree/nvim-web-devicons", opt = true },
-	})
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 
-	use({
+	{
 		"kylechui/nvim-surround",
-		tag = "*",
+		version = "*",
+		event = "VeryLazy",
 		config = function()
 			require("nvim-surround").setup()
 		end,
-	})
+	},
 
-	use({
+	{
 		"folke/trouble.nvim",
-		requires = { "nvim-tree/nvim-web-devicons" },
-	})
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 
-	use("f-person/git-blame.nvim")
+	{ "f-person/git-blame.nvim" },
 
-	use("nvim-lua/plenary.nvim")
+	{ "nvim-lua/plenary.nvim" },
 
-	use({
+	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
-	use("stevearc/conform.nvim")
+	{ "stevearc/conform.nvim" },
 
-	use("mfussenegger/nvim-lint")
+	{ "mfussenegger/nvim-lint" },
 
-	use("folke/which-key.nvim")
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+	},
 
-	use("WhoIsSethDaniel/mason-tool-installer.nvim")
+	{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
-	use("christoomey/vim-tmux-navigator")
-
-	use({
+	{
 		"stevearc/oil.nvim",
 		config = function()
 			require("configs.oil")
 		end,
-	})
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 
-	use("tris203/hawtkeys.nvim")
+	{
+		"tris203/hawtkeys.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 
-	use("nvim-tree/nvim-web-devicons")
-
-	use({
+	{
 		"andymass/vim-matchup",
-		setup = function()
+		init = function()
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
-	})
-end)
+	}
+
+	{ "nvim-tree/nvim-web-devicons" },
+})
 

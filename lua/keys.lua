@@ -10,11 +10,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Toggle git signs" })
 vim.keymap.set("n", "<leader>rp", ":term python %<CR>")
-vim.keymap.set("n", "<leader>M", function()
-	if require("multicursors.search").find_pattern(true) then
-		require("multicursors.layers").normal_hydra:activate()
-	end
-end, { desc = "Toggle multicursor pattern mode" })
 
 vim.keymap.set("n", "<leader>wt", function()
 	local cursor = vim.fn.getpos(".")
@@ -24,17 +19,9 @@ end, { desc = "Trim whitespace" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set({ "v", "n" }, "<leader> m", "MCstart", { desc = "Toggle multicursor mode" })
 
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("i", "<C-a>", "<nop>")
 vim.keymap.set("i", "<C-m>", "<nop>")
 vim.keymap.set("i", "<C-h>", "<nop>")
-
--- Tmux integration
-vim.g.tmux_navigator_no_mappings = 1
-vim.keymap.set("n", "<C-h>", ":<C-U>TmuxNavigateLeft<cr>")
-vim.keymap.set("n", "<C-j>", ":<C-U>TmuxNavigateDown<cr>")
-vim.keymap.set("n", "<C-k>", ":<C-U>TmuxNavigateUp<cr>")
-vim.keymap.set("n", "<C-l>", ":<C-U>TmuxNavigateRight<cr>")
 
