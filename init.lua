@@ -58,6 +58,7 @@ require("configs.masoninstaller")
 require("configs.textobjects")
 require("configs.hawtkeys")
 require("configs.snips")
+require("configs.vimtex")
 
 -- Plugin setups
 require("Comment").setup()

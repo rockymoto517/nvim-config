@@ -154,5 +154,10 @@ require("lazy").setup({
 	},
 
 	{ "nvim-tree/nvim-web-devicons" },
+
+	{
+		"lervag/vimtex",
+		lazy = false,
+	},
 })
 
