@@ -22,6 +22,5 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("i", "<C-a>", "<nop>")
-vim.keymap.set("i", "<C-m>", "<nop>")
 vim.keymap.set("i", "<C-h>", "<nop>")
 

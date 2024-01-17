@@ -60,6 +60,7 @@ require("configs.hawtkeys")
 require("configs.snips")
 
 -- Plugin setups
+require("Comment").setup()
 require("mason").setup()
 require("ibl").setup()
 require("colorizer").setup({}, { names = false })
