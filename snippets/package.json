@@ -1,18 +1,1 @@
-{
-	"contributes" : {
-		"snippets" : [
-			{
-				"language" : "lua",
-				"path" : "lua.json"
-			},
-			{
-				"language" : "c",
-				"path" : "c.json"
-			},
-			{
-				"language" : "c++",
-				"path" : "cpp.json"
-			}
-		]
-	}
-}
+{"contributes":{"snippets":[{"path":"lua.json","language":"lua"},{"path":"c.json","language":"c"},{"path":"cpp.json","language":"c++"},{"path":".\/tex.json","language":["tex"]}]}}

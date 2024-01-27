@@ -40,6 +40,14 @@ vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
+-- self explanatory
+vim.api.nvim_create_autocmd("BufReadPost", {
+	desc = "Open file at the last position it was edited earlier",
+	group = misc_augroup,
+	pattern = "*",
+	command = 'silent! normal! g`"zv',
+})
+
 -- Load native rebinds and plugins
 require("keys")
 require("plugins")
