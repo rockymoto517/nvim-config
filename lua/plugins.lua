@@ -84,8 +84,6 @@ require("lazy").setup({
 		main = "ibl",
 	},
 
-	{ "norcalli/nvim-colorizer.lua" },
-
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -106,8 +104,6 @@ require("lazy").setup({
 	},
 
 	{ "f-person/git-blame.nvim" },
-
-	{ "nvim-lua/plenary.nvim" },
 
 	{
 		"ThePrimeagen/harpoon",

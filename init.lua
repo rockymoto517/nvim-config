@@ -72,7 +72,6 @@ require("configs.vimtex")
 require("Comment").setup()
 require("mason").setup()
 require("ibl").setup()
-require("colorizer").setup({}, { names = false })
 require("lualine").setup()
 require("gitblame").setup()
 
