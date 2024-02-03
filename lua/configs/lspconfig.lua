@@ -1,33 +1,37 @@
-local lsp = require("lsp-zero")
-
-lsp.preset("recommended")
+local lspconfig = require("lspconfig")
 
 local cmp = require("cmp")
-local cmp_action = lsp.cmp_action()
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-n>"] = cmp_action.tab_complete(),
-	["<C-a>"] = cmp.mapping.confirm({ select = true }),
-	["<C-Space>"] = cmp.mapping.complete(),
-	["<Tab>"] = nil,
-	["<S-Tab>"] = nil,
-})
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	mapping = cmp_mappings,
+	mapping = {
+		["<C-a>"] = cmp.mapping.confirm({ select = true }),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<Tab>"] = nil,
+		["<S-Tab>"] = nil,
+		["<C-n>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_next_item({ behavior = "insert" })
+			else
+				cmp.complete()
+			end
+		end),
+		["<C-p>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item({ behavior = "insert" })
+			else
+				cmp.complete()
+			end
+		end),
+	},
 	sources = {
 		{ name = "path" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	},
-})
-
-lsp.set_preferences({
-	sign_icons = {},
 })
 
 local on_attach = function(client, bufnr)
@@ -71,7 +75,7 @@ capabilities.textDocument.completion.completionItem = {
 	},
 }
 
-require("lspconfig").metals.setup({
+lspconfig.metals.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -80,9 +84,28 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = { "clangd", "lua_ls" },
 	handlers = {
-		lsp.default_setup,
+		function(name, opts)
+			if type(name) ~= "string" then
+				return false
+			end
+
+			if type(opts) ~= "table" then
+				opts = {}
+			end
+
+			local lsp = require("lspconfig")[name]
+			local ok = pcall(lsp.setup, opts)
+			if not ok then
+				local msg = "[lsp-zero] Failed to setup %s.\n"
+					.. "Configure this server using lspconfig to get the full error message."
+
+				vim.notify(msg:format(name), vim.log.levels.WARN)
+				return false
+			end
+			return true
+		end,
 		clangd = function()
-			require("lspconfig").clangd.setup({
+			lspconfig.clangd.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 				cmd = {
@@ -102,7 +125,7 @@ require("mason-lspconfig").setup({
 			})
 		end,
 		lua_ls = function()
-			require("lspconfig").lua_ls.setup({
+			lspconfig.lua_ls.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
@@ -161,6 +184,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Get references"))
 	end,
 })
-
-lsp.setup()
 

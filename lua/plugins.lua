@@ -46,17 +46,13 @@ require("lazy").setup({
 
 	{ "nvim-treesitter/playground" },
 
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"williamboman/nvim-lsp-installer",
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			-- LSP Support
-			"neovim/nvim-lspconfig",
-		},
-	},
+	{ "williamboman/nvim-lsp-installer" },
+
+	{ "williamboman/mason.nvim" },
+
+	{ "williamboman/mason-lspconfig.nvim" },
+
+	{ "neovim/nvim-lspconfig" },
 
 	{
 		"chrisgrieser/nvim-scissors",
