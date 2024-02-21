@@ -154,7 +154,7 @@ require("lazy").setup({
 
 	{
 		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
+		build = "cd app && npm install && git restore .",
 		setup = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
