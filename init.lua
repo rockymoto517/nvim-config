@@ -56,7 +56,6 @@ require("plugins")
 -- Load plugin configurations
 require("configs.colors")
 require("configs.lspconfig")
-require("configs.telescope")
 require("configs.treesitter")
 require("configs.trouble")
 require("configs.harpoon")
