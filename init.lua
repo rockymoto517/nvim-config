@@ -41,6 +41,9 @@ vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
+-- Set python venv
+vim.g.python3_host_prog = require("python3_path")
+
 -- self explanatory
 vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Open file at the last position it was edited earlier",
@@ -74,4 +77,8 @@ require("mason").setup()
 require("ibl").setup()
 require("lualine").setup()
 require("gitblame").setup()
+
+if vim.g.neovide then
+    require("neovide")
+end
 

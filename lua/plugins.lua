@@ -24,48 +24,13 @@ require("lazy").setup({
 		branch = string.find(vim.loop.os_uname().sysname, "Windows") and "windows" or "main",
 		config = function()
 			require("fzf-lua").setup({ "telescope" })
-			vim.keymap.set(
-				"n",
-				"<leader>ff",
-				"<cmd>lua require('fzf-lua').files()<CR>",
-				{ desc = "fuzzy find files" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>fg",
-				"<cmd>lua require('fzf-lua').git_files()<CR>",
-				{ desc = "fuzzy find git files" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>fw",
-				"<cmd>lua require('fzf-lua').live_grep_glob()<CR>",
-				{ desc = "fuzzy find grep" }
-			)
-			vim.keymap.set(
-				"v",
-				"<leader>fw",
-				"<cmd>lua require('fzf-lua').grep_visual()<CR>",
-				{ desc = "fuzzy find grep visual selection" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>fb",
-				"<cmd>lua require('fzf-lua').buffers()<CR>",
-				{ desc = "fuzzy find buffers" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>fd",
-				"<cmd>lua require('fzf-lua').lsp_declarations()<CR>",
-				{ desc = "fuzzy find declarations" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>fr",
-				"<cmd>lua require('fzf-lua').lsp_references()<CR>",
-				{ desc = "fuzzy find references" }
-			)
+			vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "fuzzy find files" })
+			vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { desc = "fuzzy find git files" })
+			vim.keymap.set("n", "<leader>fw", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { desc = "fuzzy find grep" })
+			vim.keymap.set("v", "<leader>fw", "<cmd>lua require('fzf-lua').grep_visual()<CR>", { desc = "fuzzy find grep visual selection" })
+			vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = "fuzzy find buffers" })
+			vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_declarations()<CR>", { desc = "fuzzy find declarations" })
+			vim.keymap.set("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { desc = "fuzzy find references" })
 		end,
 	},
 
@@ -204,12 +169,40 @@ require("lazy").setup({
 	},
 
 	{
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
-		setup = function()
-			vim.g.mkdp_filetypes = { "markdown" }
+		"ellisonleao/glow.nvim",
+		config = function()
+			require("glow").setup({
+				style = "dark",
+				width = 120,
+			})
 		end,
-		ft = { "markdown" },
+		cmd = "Glow",
+	},
+
+	{ "sindrets/diffview.nvim" },
+
+	{
+		"danymat/neogen",
+		config = true,
+		version = "*",
+		init = function()
+			require("neogen").setup({
+				enabled = true,
+				snippet_engine = "luasnip",
+				languages = {
+					lua = {
+						template = {
+							annotation_convention = "emmylua",
+						},
+					},
+				},
+			})
+
+			local opts = { noremap = true, silent = true }
+			vim.api.nvim_set_keymap("n", "<leader>af", ":lua require('neogen').generate({ type = 'function' })<CR>", opts)
+			vim.api.nvim_set_keymap("n", "<leader>ac", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
+			vim.api.nvim_set_keymap("n", "<leader>at", ":lua require('neogen').generate({ type = 'type' })<CR>", opts)
+		end,
 	},
 })
 
