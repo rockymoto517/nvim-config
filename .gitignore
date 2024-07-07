@@ -2,3 +2,4 @@ lazy-lock.json
 lua/undodir.lua
 lua/configs/path.lua
 lua/python3_path.lua
+formatting/stylua.toml.back

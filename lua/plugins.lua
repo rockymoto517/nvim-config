@@ -199,10 +199,9 @@ require("lazy").setup({
 			})
 
 			local opts = { noremap = true, silent = true }
-			vim.api.nvim_set_keymap("n", "<leader>af", ":lua require('neogen').generate({ type = 'function' })<CR>", opts)
+			vim.api.nvim_set_keymap("n", "<leader>af", ":lua require('neogen').generate({ type = 'func' })<CR>", opts)
 			vim.api.nvim_set_keymap("n", "<leader>ac", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
 			vim.api.nvim_set_keymap("n", "<leader>at", ":lua require('neogen').generate({ type = 'type' })<CR>", opts)
 		end,
 	},
 })
-
