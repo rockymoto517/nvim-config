@@ -77,8 +77,8 @@ require("mason").setup()
 require("ibl").setup()
 require("lualine").setup()
 require("gitblame").setup()
+require("mini.pairs").setup()
 
 if vim.g.neovide then
-    require("neovide")
+	require("neovide")
 end
-

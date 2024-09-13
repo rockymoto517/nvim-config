@@ -147,6 +147,28 @@ require("mason-lspconfig").setup({
 				capabilities = capabilities,
 			})
 		end,
+		html = function()
+			lspconfig.html.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				settings = {
+					filetypes = { "html", "templ", "html.erb", "erb", "php" },
+					embeddedLanguages = { ruby = true, php = true },
+				},
+			})
+		end,
+		ruby_lsp = function()
+			lspconfig.ruby_lsp.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		end,
+		intelephense = function()
+			lspconfig.intelephense.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		end,
 	},
 })
 
@@ -179,4 +201,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Get references"))
 	end,
 })
-

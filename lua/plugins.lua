@@ -204,4 +204,18 @@ require("lazy").setup({
 			vim.api.nvim_set_keymap("n", "<leader>at", ":lua require('neogen').generate({ type = 'type' })<CR>", opts)
 		end,
 	},
+
+	{
+		"echasnovski/mini.pairs",
+		version = "*",
+	},
+
+	{
+		"otavioschwanck/arrow.nvim",
+		opts = {
+			show_icons = true,
+			leader_key = ";",
+			buffer_leader_key = "m",
+		},
+	},
 })
