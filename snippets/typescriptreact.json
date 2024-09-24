@@ -1,0 +1,1 @@
+{"trycatch":{"body":["try {","\t$0","} catch (error) {","\tconsole.log(error);","\ttoast(\"Something went wrong\");","}"],"prefix":"trycatch"}}

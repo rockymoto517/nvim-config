@@ -23,7 +23,17 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		branch = string.find(vim.loop.os_uname().sysname, "Windows") and "windows" or "main",
 		config = function()
-			require("fzf-lua").setup({ "telescope" })
+			local actions = require("fzf-lua.actions")
+			require("fzf-lua").setup({
+				"telescope",
+				actions = {
+					files = {
+						["ctrl-s"] = actions.file_vsplit,
+						["ctrl-q"] = actions.file_split,
+						["ctrl-v"] = nil,
+					},
+				},
+			})
 			vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "fuzzy find files" })
 			vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { desc = "fuzzy find git files" })
 			vim.keymap.set("n", "<leader>fw", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { desc = "fuzzy find grep" })
