@@ -52,24 +52,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	command = 'silent! normal! g`"zv',
 })
 
--- Load native rebinds and plugins
+-- Load native rebinds
 require("keys")
-require("plugins")
 
--- Load plugin configurations
-require("configs.colors")
-require("configs.lspconfig")
-require("configs.treesitter")
-require("configs.trouble")
-require("configs.harpoon")
-require("configs.conform")
-require("configs.linting")
-require("configs.whichkey")
-require("configs.masoninstaller")
-require("configs.textobjects")
-require("configs.hawtkeys")
-require("configs.snips")
-require("configs.vimtex")
+-- Load plugins
+require("lazy").setup({
+	spec = "plugins",
+	checker = { enabled = true },
+})
 
 -- Plugin setups
 require("Comment").setup()
