@@ -58,7 +58,6 @@ require("keys")
 -- Load plugins
 require("lazy").setup({
 	spec = "plugins",
-	checker = { enabled = true },
 })
 
 -- Plugin setups
