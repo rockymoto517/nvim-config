@@ -8,6 +8,8 @@ return {
 				python = { "isort", "black" },
 				cpp = { "clang_format" },
 				c = { "clang_format" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
@@ -24,6 +26,11 @@ return {
 		local clangformat = path .. ".clang-format"
 		conform.formatters.clang_format = {
 			prepend_args = { "--style=file:" .. clangformat },
+		}
+
+		local prettierrc = path .. ".prettierrc"
+		conform.formatters.prettier = {
+			prepend_args = { "--tab-width", "2", "--trailing-comma", "es5" },
 		}
 
 		vim.keymap.set({ "n", "v" }, "<leader>fmt", function()
