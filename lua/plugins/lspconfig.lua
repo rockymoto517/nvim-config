@@ -39,12 +39,18 @@ return {
 
 		local on_attach = function(client, bufnr)
 			local function opts(_desc)
-				return { buffer = bufnr, remap = false, desc = _desc }
+				return { buffer = bufnr, noremap = true, silent = true, desc = _desc }
 			end
 
-			vim.keymap.set("n", "gd", function()
+			vim.keymap.set("n", "<leader>gd", function()
 				vim.lsp.buf.definition()
 			end, opts("Go to definition"))
+			vim.keymap.set("n", "<leader>gD", function()
+				vim.lsp.buf.declaration()
+			end, opts("Go to declaration"))
+			vim.keymap.set("n", "<leader>gi", function()
+				vim.lsp.buf.implementation()
+			end, opts("Go to implementation"))
 			vim.keymap.set("n", "<leader>ca", function()
 				vim.lsp.buf.code_action()
 			end, opts("Do code action"))
@@ -98,7 +104,7 @@ return {
 					local lsp = require("lspconfig")[name]
 					local ok = pcall(lsp.setup, opts)
 					if not ok then
-						local msg = "[lsp-zero] Failed to setup %s.\n" .. "Configure this server using lspconfig to get the full error message."
+						local msg = "[lsp] Failed to setup %s.\n" .. "Configure this server using lspconfig to get the full error message."
 
 						vim.notify(msg:format(name), vim.log.levels.WARN)
 						return false
@@ -155,19 +161,18 @@ return {
 						on_attach = on_attach,
 						capabilities = capabilities,
 						settings = {
-							filetypes = { "html", "templ", "html.erb", "erb", "php" },
-							embeddedLanguages = { ruby = true, php = true },
+							filetypes = { "html", "templ" },
 						},
-					})
-				end,
-				intelephense = function()
-					lspconfig.intelephense.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
 					})
 				end,
 				ts_ls = function()
 					lspconfig.ts_ls.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end,
+				zls = function()
+					lspconfig.zls.setup({
 						on_attach = on_attach,
 						capabilities = capabilities,
 					})
@@ -188,10 +193,8 @@ return {
 				local function opts(desc)
 					return { buffer = ev.buf, desc = desc }
 				end
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Hover"))
-				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
+				--[[ Disable these, they're used elsewhere
 				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts("Signature help"))
 				vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
 				vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
@@ -201,7 +204,7 @@ return {
 				vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts("Go to type definition"))
 				vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts("Rename symbol"))
 				vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts("Do vim code action"))
-				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Get references"))
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Get references")) ]]
 			end,
 		})
 	end,
