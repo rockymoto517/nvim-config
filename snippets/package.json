@@ -1,1 +1,1 @@
-{"contributes":{"snippets":[{"path":"lua.json","language":"lua"},{"path":"c.json","language":"c"},{"path":"cpp.json","language":"c++"},{"path":".\/tex.json","language":["tex"]},{"path":".\/typescriptreact.json","language":["typescriptreact"]}]}}
+{"contributes":{"snippets":[{"language":"lua","path":"lua.json"},{"language":"c","path":"c.json"},{"language":"c++","path":"cpp.json"},{"language":["tex"],"path":".\/tex.json"},{"language":["typescriptreact"],"path":".\/typescriptreact.json"},{"language":["typescript"],"path":".\/typescript.json"}]}}

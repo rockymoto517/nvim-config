@@ -21,7 +21,23 @@ return {
 				["g\\"] = "actions.toggle_trash",
 			},
 			view_options = {
-				show_hidden = true,
+				is_hidden_file = function(name, bufnr)
+					local checks = {
+						".cache",
+						".xmake",
+					}
+					for _, v in ipairs(checks) do
+						if vim.startswith(name, v) then
+							return true
+						end
+					end
+					if vim.startswith(name, "build") then
+						if not vim.startswith(name, "build.zig") then
+							return true
+						end
+					end
+					return false
+				end,
 			},
 		})
 	end,

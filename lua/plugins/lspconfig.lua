@@ -29,6 +29,7 @@ return {
 						cmp.complete()
 					end
 				end),
+				["<C-e>"] = cmp.mapping.abort(),
 			},
 			sources = {
 				{ name = "path" },
@@ -171,13 +172,13 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-				zls = function()
-					lspconfig.zls.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-					})
-				end,
 			},
+		})
+
+		-- Not dependent on Mason
+		lspconfig.zls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
 		})
 
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)

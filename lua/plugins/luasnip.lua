@@ -20,7 +20,7 @@ return {
 			},
 		})
 
-		require("luasnip.loaders.from_vscode").load({
+		require("luasnip.loaders.from_vscode").lazy_load({
 			paths = { "./snippets" },
 		})
 
@@ -30,7 +30,7 @@ return {
 		vim.keymap.set({ "i", "s" }, "<C-j>", function()
 			ls.jump(1)
 		end, { silent = true })
-		vim.keymap.set({ "i", "s" }, "<C-h>", function()
+		vim.keymap.set({ "i", "s" }, "<C-k>", function()
 			ls.jump(-1)
 		end, { silent = true })
 		vim.keymap.set({ "i", "s" }, "<C-e>", function()

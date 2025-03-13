@@ -1,0 +1,1 @@
+{"controller":{"prefix":"controller","body":["export const $1 = async (req: CustomRequest, res: Response) => {","  try {","\t$2","    return respHandler({ req, res, status: 201, data: serverError });","  } catch (error) {","    logger.error(JSON.stringify(error, null, 2));","    return respHandler({ req, res, status: 500, data: serverError });","  }","};"]}}

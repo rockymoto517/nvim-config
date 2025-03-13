@@ -1,8 +1,11 @@
 return {
 	"otavioschwanck/arrow.nvim",
+	dependencies = {
+		{ "nvim-tree/nvim-web-devicons" },
+	},
 	opts = {
 		show_icons = true,
-		leader_key = "<C-;>",
-		buffer_leader_key = "<C-,>",
+		leader_key = "t",
+		buffer_leader_key = "<C-t>",
 	},
 }
