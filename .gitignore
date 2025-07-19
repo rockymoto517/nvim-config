@@ -4,5 +4,6 @@ lua/path.lua
 lua/python3_path.lua
 lua/os.lua
 lua/plugins/term.lua
+lua/omnisharp.lua
 formatting/stylua.toml.back
 .venv/*

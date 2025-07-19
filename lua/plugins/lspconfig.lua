@@ -84,97 +84,69 @@ return {
 			},
 		}
 
-		lspconfig.metals.setup({
+		lspconfig.clangd.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--completion-style=bundled",
+				"--cross-file-rename",
+				"--header-insertion=iwyu",
+			},
+			init_options = {
+				clangdFileStatus = true,
+				usePlaceholders = true,
+				completeUnimported = true,
+				semanticHighlighting = true,
+			},
+		})
+		lspconfig.lua_ls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					telemetry = { enable = false },
+					diagnostics = { disable = { "undefined-global" } },
+					workspace = {
+						checkThirdParty = false,
+						preloadFileSize = 5000,
+					},
+					runtime = {
+						version = "LuaJIT",
+						path = {
+							"lua/?.lua",
+							"lua/?/init.lua",
+						},
+					},
+				},
+			},
+		})
+		lspconfig.rust_analyzer.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-
-		require("mason").setup({})
-		require("mason-lspconfig").setup({
-			handlers = {
-				function(name, opts)
-					if type(name) ~= "string" then
-						return false
-					end
-
-					if type(opts) ~= "table" then
-						opts = {}
-					end
-
-					local lsp = require("lspconfig")[name]
-					local ok = pcall(lsp.setup, opts)
-					if not ok then
-						local msg = "[lsp] Failed to setup %s.\n" .. "Configure this server using lspconfig to get the full error message."
-
-						vim.notify(msg:format(name), vim.log.levels.WARN)
-						return false
-					end
-					return true
-				end,
-				clangd = function()
-					lspconfig.clangd.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-						cmd = {
-							"clangd",
-							"--background-index",
-							"--clang-tidy",
-							"--completion-style=bundled",
-							"--cross-file-rename",
-							"--header-insertion=iwyu",
-						},
-						init_options = {
-							clangdFileStatus = true,
-							usePlaceholders = true,
-							completeUnimported = true,
-							semanticHighlighting = true,
-						},
-					})
-				end,
-				lua_ls = function()
-					lspconfig.lua_ls.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								workspace = { checkThirdParty = false },
-								telemtry = { enable = false },
-								diagnostics = { disable = { "undefined-global" } },
-							},
-						},
-					})
-				end,
-				rust_analyzer = function()
-					lspconfig.rust_analyzer.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-					})
-				end,
-				omnisharp = function()
-					lspconfig.omnisharp.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-					})
-				end,
-				html = function()
-					lspconfig.html.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-						settings = {
-							filetypes = { "html", "templ" },
-						},
-					})
-				end,
-				ts_ls = function()
-					lspconfig.ts_ls.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-					})
-				end,
+		lspconfig.omnisharp.setup({
+			cmd = { "dotnet", require("omnisharp") },
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+		lspconfig.html.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				filetypes = { "html", "templ" },
 			},
 		})
-
-		-- Not dependent on Mason
+		lspconfig.ts_ls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+		lspconfig.tailwindcss.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 		lspconfig.zls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,

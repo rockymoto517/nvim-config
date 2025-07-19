@@ -62,7 +62,6 @@ require("lazy").setup({
 
 -- Plugin setups
 require("Comment").setup()
-require("mason").setup()
 require("ibl").setup()
 require("lualine").setup()
 require("gitblame").setup()
