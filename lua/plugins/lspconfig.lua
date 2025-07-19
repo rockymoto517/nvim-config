@@ -128,7 +128,7 @@ return {
 			capabilities = capabilities,
 		})
 		lspconfig.omnisharp.setup({
-			cmd = { "dotnet", require("omnisharp") },
+			cmd = { "dotnet", "omnisharp" },
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
