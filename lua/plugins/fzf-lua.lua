@@ -15,11 +15,15 @@ return {
 			},
 		})
 		vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "fuzzy find files" })
-		vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { desc = "fuzzy find git files" })
-		vim.keymap.set("n", "<leader>fw", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { desc = "fuzzy find grep" })
-		vim.keymap.set("v", "<leader>fw", "<cmd>lua require('fzf-lua').grep_visual()<CR>", { desc = "fuzzy find grep visual selection" })
+		vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>",
+			{ desc = "fuzzy find git files" })
+		vim.keymap.set("n", "<leader>fw", "<cmd>lua require('fzf-lua').live_grep()<CR>", { desc = "fuzzy find grep" })
+		vim.keymap.set("v", "<leader>fw", "<cmd>lua require('fzf-lua').grep_visual()<CR>",
+			{ desc = "fuzzy find grep visual selection" })
 		vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = "fuzzy find buffers" })
-		vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_declarations()<CR>", { desc = "fuzzy find declarations" })
-		vim.keymap.set("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { desc = "fuzzy find references" })
+		vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_declarations()<CR>",
+			{ desc = "fuzzy find declarations" })
+		vim.keymap.set("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>",
+			{ desc = "fuzzy find references" })
 	end,
 }

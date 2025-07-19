@@ -2,4 +2,7 @@ lazy-lock.json
 lua/undodir.lua
 lua/path.lua
 lua/python3_path.lua
+lua/os.lua
+lua/plugins/term.lua
 formatting/stylua.toml.back
+.venv/*
