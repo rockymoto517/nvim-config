@@ -20,8 +20,14 @@
 return {
 	"Skardyy/makurai-nvim",
 	config = function()
+		require("makurai").modify("autumn", {
+			normal = "#82aaff",
+			blue = "#82aaff",
+		})
+
 		require("makurai").setup({
 			transparent = true,
+			increased_contrast = true,
 		})
 
 		vim.cmd.colorscheme("makurai_autumn")

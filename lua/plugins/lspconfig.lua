@@ -127,11 +127,19 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-		lspconfig.omnisharp.setup({
-			cmd = { "dotnet", "omnisharp" },
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
+		if require("os") == "linux" then
+			lspconfig.omnisharp.setup({
+				cmd = { "omnisharp", "-lsp" },
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		else
+			lspconfig.omnisharp.setup({
+				cmd = { "dotnet", "omnisharp" },
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		end
 		lspconfig.html.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
