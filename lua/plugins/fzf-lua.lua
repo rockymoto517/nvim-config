@@ -9,8 +9,14 @@ return {
 			actions = {
 				files = {
 					["ctrl-s"] = actions.file_vsplit,
-					["ctrl-q"] = actions.file_split,
+					["ctrl-l"] = actions.file_split,
 					["ctrl-v"] = nil,
+				},
+			},
+			files = {
+				actions = {
+					-- Send all to quickfix list
+					["ctrl-q"] = { fn = require("fzf-lua.actions").file_sel_to_qf, prefix = "select-all" },
 				},
 			},
 		})
@@ -21,5 +27,7 @@ return {
 		vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = "fuzzy find buffers" })
 		vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_declarations()<CR>", { desc = "fuzzy find declarations" })
 		vim.keymap.set("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { desc = "fuzzy find references" })
+		vim.keymap.set("n", "<leader>fq", "<cmd>lua require('fzf-lua').lgrep_quickfix()<CR>", { desc = "fuzzy find quickfix" })
+		vim.keymap.set("n", "<leader>fl", "<cmd>lua require('fzf-lua').lgrep_loclist()<CR>", { desc = "fuzzy find loclist" })
 	end,
 }

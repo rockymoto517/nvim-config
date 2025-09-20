@@ -4,7 +4,6 @@ return {
 		local lint = require("lint")
 		lint.linters_by_ft = {
 			cpp = { "clangtidy" },
-			python = { "pylint" },
 		}
 
 		lint.linters.clangtidy.args = {

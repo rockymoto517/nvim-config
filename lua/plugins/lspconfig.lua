@@ -84,7 +84,7 @@ return {
 			},
 		}
 
-		lspconfig.clangd.setup({
+		vim.lsp.config("clangd", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			cmd = {
@@ -95,14 +95,9 @@ return {
 				"--cross-file-rename",
 				"--header-insertion=iwyu",
 			},
-			init_options = {
-				clangdFileStatus = true,
-				usePlaceholders = true,
-				completeUnimported = true,
-				semanticHighlighting = true,
-			},
 		})
-		lspconfig.lua_ls.setup({
+		vim.lsp.enable("clangd")
+		vim.lsp.config("lua_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
@@ -123,42 +118,40 @@ return {
 				},
 			},
 		})
-		lspconfig.rust_analyzer.setup({
+		vim.lsp.enable("lua_ls")
+		vim.lsp.config("rust_analyzer", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-		if require("os") == "linux" then
-			lspconfig.omnisharp.setup({
-				cmd = { "omnisharp", "-lsp" },
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-		else
-			lspconfig.omnisharp.setup({
-				cmd = { "dotnet", "omnisharp" },
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-		end
-		lspconfig.html.setup({
+		vim.lsp.enable("rust_analyzer")
+		vim.lsp.config("html", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
 				filetypes = { "html", "templ" },
 			},
 		})
-		lspconfig.ts_ls.setup({
+		vim.lsp.enable("html")
+		vim.lsp.config("ts_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-		lspconfig.tailwindcss.setup({
+		vim.lsp.enable("ts_ls")
+		vim.lsp.config("tailwindcss", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-		lspconfig.zls.setup({
+		vim.lsp.enable("tailwindcss")
+		vim.lsp.config("zls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
+		vim.lsp.enable("zls")
+		vim.lsp.config("pylsp", {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+		vim.lsp.enable("pylsp")
 
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)

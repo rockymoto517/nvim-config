@@ -25,3 +25,7 @@ vim.keymap.set("i", "<C-a>", "<nop>")
 vim.keymap.set("i", "<C-h>", "<nop>")
 vim.keymap.set("n", "t", "<nop>")
 vim.keymap.set("n", "<c-t>", "<nop>")
+
+vim.keymap.set("n", "<leader>ql", "<cmd>copen<cr>", { desc = "Open quickfix list" })
+vim.keymap.set("n", "<leader>qn", "<cmd>cn<cr>", { desc = "Next in quickfix list" })
+vim.keymap.set("n", "<leader>qp", "<cmd>cp<cr>", { desc = "Next in quickfix list" })
