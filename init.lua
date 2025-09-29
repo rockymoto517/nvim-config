@@ -56,12 +56,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 require("keys")
 
 -- Load plugins
-require("lazy").setup({
-	spec = "plugins",
-})
+require("lazy").setup({ spec = "plugins" })
 
-require("gitblame").setup()
-
+-- Load neovide config if we have it
 if vim.g.neovide then
 	require("neovide")
 end
