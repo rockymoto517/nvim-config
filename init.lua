@@ -60,12 +60,7 @@ require("lazy").setup({
 	spec = "plugins",
 })
 
--- Plugin setups
-require("Comment").setup()
-require("ibl").setup()
-require("lualine").setup()
 require("gitblame").setup()
-require("mini.pairs").setup()
 
 if vim.g.neovide then
 	require("neovide")

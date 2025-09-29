@@ -26,6 +26,14 @@ vim.keymap.set("i", "<C-h>", "<nop>")
 vim.keymap.set("n", "t", "<nop>")
 vim.keymap.set("n", "<c-t>", "<nop>")
 
-vim.keymap.set("n", "<leader>ql", "<cmd>copen<cr>", { desc = "Open quickfix list" })
+-- Quickfix stuffs
+vim.keymap.set("n", "<leader>qf", function()
+	require("quicker").toggle()
+end, { desc = "Toggle quickfix list" })
+vim.keymap.set("n", "<leader>ql", function()
+	require("quicker").toggle({ loclist = true })
+end, { desc = "Toggle location list" })
 vim.keymap.set("n", "<leader>qn", "<cmd>cn<cr>", { desc = "Next in quickfix list" })
 vim.keymap.set("n", "<leader>qp", "<cmd>cp<cr>", { desc = "Next in quickfix list" })
+
+vim.keymap.set("n", "<leader>bd", "<cmd>%bd|e#|bd#", { desc = "Close all buffers except current" })
