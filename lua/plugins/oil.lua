@@ -31,11 +31,6 @@ return {
 							return true
 						end
 					end
-					if vim.startswith(name, "build") then
-						if not vim.startswith(name, "build.zig") then
-							return true
-						end
-					end
 					return false
 				end,
 			},

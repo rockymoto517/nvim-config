@@ -17,19 +17,27 @@
 -- 		vim.cmd([[colorscheme rose-pine]])
 -- 	end,
 -- }
+---
+-- return {
+-- 	"Skardyy/makurai-nvim",
+-- 	config = function()
+-- 		require("makurai").modify("autumn", {
+-- 			normal = "#82aaff",
+-- 			blue = "#82aaff",
+-- 		})
+--
+-- 		require("makurai").setup({
+-- 			transparent = true,
+-- 			increased_contrast = true,
+-- 		})
+--
+-- 		vim.cmd.colorscheme("makurai_autumn")
+-- 	end,
+-- }
 return {
-	"Skardyy/makurai-nvim",
+	"sainnhe/sonokai",
 	config = function()
-		require("makurai").modify("autumn", {
-			normal = "#82aaff",
-			blue = "#82aaff",
-		})
-
-		require("makurai").setup({
-			transparent = true,
-			increased_contrast = true,
-		})
-
-		vim.cmd.colorscheme("makurai_autumn")
+		vim.g.sonokai_style = "shusia"
+		vim.cmd.colorscheme("sonokai")
 	end,
 }

@@ -12,9 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+require("tabs")
 
 vim.opt.cindent = true
 vim.opt.wrap = false
@@ -57,6 +55,12 @@ require("keys")
 
 -- Load plugins
 require("lazy").setup({ spec = "plugins" })
+
+-- Treesitter folding
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- Expand folds by default
+vim.o.foldlevel = 99
 
 -- Load neovide config if we have it
 if vim.g.neovide then
