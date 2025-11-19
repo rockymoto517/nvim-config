@@ -90,7 +90,7 @@ return {
 			cmd = {
 				"clangd",
 				"--background-index",
-				"--clang-tidy",
+				-- "--clang-tidy",
 				"--completion-style=bundled",
 				"--cross-file-rename",
 				"--header-insertion=iwyu",
@@ -119,6 +119,11 @@ return {
 			},
 		})
 		vim.lsp.enable("lua_ls")
+		vim.lsp.config("hls", {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+		vim.lsp.enable("hls")
 		vim.lsp.config("rust_analyzer", {
 			on_attach = on_attach,
 			capabilities = capabilities,

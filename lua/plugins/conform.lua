@@ -7,6 +7,8 @@ return {
 				lua = { "stylua" },
 				cpp = { "clang_format" },
 				c = { "clang_format" },
+				javascript = { "prettier" },
+				javascriptreact = { "prettier" },
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" },
 			},
@@ -30,7 +32,8 @@ return {
 			prepend_args = { "--style=file:" .. clangformat },
 		}
 
-		local prettierrc = path .. ".prettierrc"
+		-- unused atm
+		-- local prettierrc = path .. ".prettierrc"
 		conform.formatters.prettier = {
 			prepend_args = { "--tab-width", "2", "--trailing-comma", "es5" },
 		}
