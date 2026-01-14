@@ -4,6 +4,7 @@ local double_tab = {
 	["typescript"] = true,
 	["typescriptreact"] = true,
 	["yaml"] = true,
+	["css"] = true,
 }
 
 vim.api.nvim_create_autocmd("FileType", {
