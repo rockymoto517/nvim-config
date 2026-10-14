@@ -129,51 +129,11 @@ return {
 			capabilities = capabilities,
 		})
 		vim.lsp.enable("rust_analyzer")
-		vim.lsp.config("html", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				filetypes = { "html", "templ" },
-			},
-		})
-		vim.lsp.enable("html")
 		vim.lsp.config("ts_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-		vim.lsp.config("astro", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			init_options = {
-				typescript = {
-					tsdk = "node_modules/.pnpm/typescript@5.9.3/node_modules/typescript/lib",
-				},
-			},
-			-- Homemade for pnpm :D
-			before_init = function(_, config)
-				if config.init_options and config.init_options.typescript and not config.init_options.typescript.tsdk then
-					local project_roots = vim.fs.find("node_modules", { path = root_dir, upward = true, limit = math.huge })
-					local typescript_path
-					for _, project_root in ipairs(project_roots) do
-						typescript_path = vim.fs.find(function(name, path)
-							return name:match("typescript@") and path:match("[/\\]%.pnpm$")
-						end, { limit = 1, path = project_root .. "/.pnpm/", type = "directory", follow = true })[1]
-						if typescript_path then
-							break
-						end
-					end
-
-					config.init_options.typescript.tsdk = typescript_path or ""
-				end
-			end,
-		})
-		vim.lsp.enable("astro")
 		vim.lsp.enable("ts_ls")
-		vim.lsp.config("tailwindcss", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-		vim.lsp.enable("tailwindcss")
 		vim.lsp.config("zls", {
 			on_attach = on_attach,
 			capabilities = capabilities,

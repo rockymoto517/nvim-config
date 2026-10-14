@@ -34,10 +34,23 @@
 -- 		vim.cmd.colorscheme("makurai_autumn")
 -- 	end,
 -- }
+-- return {
+-- 	"sainnhe/sonokai",
+-- 	config = function()
+-- 		vim.g.sonokai_style = "shusia"
+-- 		vim.cmd.colorscheme("sonokai")
+-- 	end,
+-- }
 return {
-	"sainnhe/sonokai",
-	config = function()
-		vim.g.sonokai_style = "shusia"
-		vim.cmd.colorscheme("sonokai")
-	end,
+  "Skardyy/makurai-nvim",
+  config = function()
+    -- you don't have to call setup
+    require "makurai".setup({
+      transparent = false,               -- removes the bg color
+      cursor = false,                    -- rather or not to modify the cursor color too, changes the `Cursor` highlight
+      highlight_only_method_def = false, -- when true, highlights only methods definition, not calls
+    })
+
+    vim.cmd.colorscheme("makurai_dark")
+  end
 }

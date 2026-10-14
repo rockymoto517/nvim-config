@@ -40,7 +40,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
 -- Set python venv
-vim.g.python3_host_prog = require("python3_path")
+-- vim.g.python3_host_prog = require("python3_path")
 
 -- self explanatory
 vim.api.nvim_create_autocmd("BufReadPost", {
